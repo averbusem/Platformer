@@ -100,10 +100,10 @@ TextureImporter:
       name: Idle_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 36
         y: 0
-        width: 128
-        height: 128
+        width: 28
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,10 +121,10 @@ TextureImporter:
       name: Idle_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 164
         y: 0
-        width: 128
-        height: 128
+        width: 28
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,10 +142,10 @@ TextureImporter:
       name: Idle_2
       rect:
         serializedVersion: 2
-        x: 256
+        x: 289
         y: 0
-        width: 128
-        height: 128
+        width: 31
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +163,10 @@ TextureImporter:
       name: Idle_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 417
         y: 0
-        width: 128
-        height: 128
+        width: 33
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: Idle_4
       rect:
         serializedVersion: 2
-        x: 512
+        x: 545
         y: 0
-        width: 128
-        height: 128
+        width: 31
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +205,10 @@ TextureImporter:
       name: Idle_5
       rect:
         serializedVersion: 2
-        x: 640
+        x: 673
         y: 0
-        width: 128
-        height: 128
+        width: 31
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,10 +226,10 @@ TextureImporter:
       name: Idle_6
       rect:
         serializedVersion: 2
-        x: 768
+        x: 804
         y: 0
-        width: 128
-        height: 128
+        width: 28
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
