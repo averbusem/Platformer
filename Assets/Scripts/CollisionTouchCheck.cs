@@ -6,6 +6,7 @@ public class CollisionTouchCheck : MonoBehaviour
 {
     bool _isGrouded;
     CapsuleCollider2D collision;
+    Animator anim;
     public bool IsGrounded
     {
         get
@@ -21,6 +22,7 @@ public class CollisionTouchCheck : MonoBehaviour
     private void Awake()
     {
         collision = GetComponent<CapsuleCollider2D>();
+        anim = GetComponentInChildren<Animator>();
     }
     [SerializeField]
     ContactFilter2D ground_filter;
@@ -29,6 +31,5 @@ public class CollisionTouchCheck : MonoBehaviour
     private void FixedUpdate()
     {
         IsGrounded = collision.Cast(Vector2.down, ground_filter, grounds_hits, ground_check_distance) > 0;
-        Debug.Log("IsGrounded: " + IsGrounded);
     }
 }
