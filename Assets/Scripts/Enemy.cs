@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     private float speed = 2.0f;
     private float dist = 2.5f;
+    private bool reload=false;
     private 
     float pos_x;
     Rigidbody2D rb;
@@ -26,8 +27,10 @@ public class Enemy : MonoBehaviour
     {
         if (Vector2.Distance(player.transform.position, transform.position) < 2)
         {
-            Attack();
-            StartCoroutine(Reload());
+            if (!reload)
+            {
+                Attack();
+            }
         }
         else
         {
@@ -47,11 +50,13 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator Reload()
     {
-        Debug.Log("Yes");
+        reload = true;
         yield return new WaitForSeconds(5);
+        reload = false;
     }    
     private void Attack()
     {
-        anim.Play("Attack");
+        anim.SetTrigger("Attack");
+        StartCoroutine(Reload());
     }
 }
