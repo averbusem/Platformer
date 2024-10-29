@@ -7,9 +7,9 @@ public class Enemy : MonoBehaviour
     private float speed = 2.0f;
     private float dist = 2.5f;
     private bool reload=false;
-    private 
+    private bool isDead=false;
     float pos_x;
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
     Animator anim;
     SpriteRenderer spt;
     GameObject player;
@@ -25,26 +25,29 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Vector2.Distance(player.transform.position, transform.position) < 2)
+        if (!isDead)
         {
-            if (!reload)
+            if (Vector2.Distance(player.transform.position, transform.position) < 2)
             {
-                Attack();
-            }
-        }
-        else
-        {
-            if (Mathf.Abs(transform.position.x - pos_x) < dist)
-            {
-                anim.SetFloat("Speed", Mathf.Abs(speed));
-                transform.Translate(Vector2.right * speed * Time.fixedDeltaTime);
+                if (!reload)
+                {
+                    Attack();
+                }
             }
             else
             {
-                spt.flipX = !spt.flipX;
-                anim.SetFloat("Speed", Mathf.Abs(speed));
-                speed *= -1;
-                transform.Translate(Vector2.right * speed * Time.fixedDeltaTime);
+                if (Mathf.Abs(transform.position.x - pos_x) < dist)
+                {
+                    anim.SetFloat("Speed", Mathf.Abs(speed));
+                    transform.Translate(Vector2.right * speed * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    spt.flipX = !spt.flipX;
+                    anim.SetFloat("Speed", Mathf.Abs(speed));
+                    speed *= -1;
+                    transform.Translate(Vector2.right * speed * Time.fixedDeltaTime);
+                }
             }
         }
     }
@@ -58,5 +61,11 @@ public class Enemy : MonoBehaviour
     {
         anim.SetTrigger("Attack");
         StartCoroutine(Reload());
+    }
+    public void Death()
+    {
+        anim.SetTrigger("Death");
+        isDead = true;
+        rb.simulated = false;
     }
 }

@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     CollisionTouchCheck col_touch_check;
     SpriteRenderer spr;
     Animator anim;
+    GameObject attack_p;
+    public LayerMask enemy;
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
         col_touch_check = GetComponent<CollisionTouchCheck>();
         spr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
+        attack_p = GameObject.FindWithTag("Attack_p");
     }
 
     Vector2 move_input; // ось движения
@@ -78,7 +81,6 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator Sword_Reload()
     {
-        Debug.Log("Reload");
         isSwordReloading = true;
         yield return new WaitForSeconds(reloadTime);
         isSwordReloading = false;
@@ -89,7 +91,12 @@ public class PlayerController : MonoBehaviour
         {
             if (!isSwordReloading)
             {
-                Debug.Log("Sword!");
+                Collider2D[] damage = Physics2D.OverlapCircleAll(attack_p.transform.position, 2, enemy);
+                foreach (Collider2D col in damage)
+                {
+                    Debug.Log(col + " Damaged");
+                    col.GetComponent<Enemy>().Death();
+                }
                 anim.SetTrigger("Sword");
                 StartCoroutine(Sword_Reload());
             }
