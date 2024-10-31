@@ -5,7 +5,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float movement_speed = 300;
+    private float movement_speed = 350;
     private bool isSwordReloading= false;
     [SerializeField] private float reloadTime = 2f;
 
