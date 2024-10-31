@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jump_impulse);
         }
+        Debug.Log("Hello");
     }
 
     [SerializeField]
