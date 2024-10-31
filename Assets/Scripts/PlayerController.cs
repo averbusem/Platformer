@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float movement_speed = 300;
     private bool isSwordReloading= false;
-    private float reloadTime = 2f;
+    [SerializeField] private float reloadTime = 2f;
 
     Rigidbody2D rb;
     CollisionTouchCheck col_touch_check;
