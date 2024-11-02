@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float movement_speed = 300;
     private bool isSwordReloading= false;
-    [SerializeField] private float reloadTime = 2f;
+    private float reloadTime = 0.255f;
 
     Rigidbody2D rb;
     CollisionTouchCheck col_touch_check;
@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
         attack_p = GameObject.FindWithTag("Attack_p");
     }
 
-    Vector2 move_input; // ось движения
-    private bool isJumpHeld = false; // удерживается ли кнопка прыжка
+    Vector2 move_input; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    private bool isJumpHeld = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -51,12 +51,12 @@ public class PlayerController : MonoBehaviour
         {
             spr.flipX = false;
         }
-        // Если кнопка прыжка удерживается и персонаж касается земли, совершаем прыжок
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         if (col_touch_check.IsGrounded && isJumpHeld)
         {
             rb.velocity = new Vector2(rb.velocity.x, jump_impulse);
         }
-        Debug.Log("В 18 у шараги");
+        Debug.Log("пїЅ 18 пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
     }
 
     [SerializeField]
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         if (context.canceled)
         {
             isJumpHeld = false;
-            // Если отпустили кнопку, уменьшаем скорость прыжка
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.3f);
         }
     }
