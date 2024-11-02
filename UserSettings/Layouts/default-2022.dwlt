@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1675.6362
     height: 852.6545
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -997,7 +997,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 13898
+  m_LastSelectedObjectID: 30108
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1315,10 +1315,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1320
+    x: 3679
     y: 73
-    width: 599
-    height: 926
+    width: 800
+    height: 1278
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
