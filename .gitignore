@@ -7,6 +7,7 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 [Aa]ssets/StreamingAssets/**/*.bin
+/[Uu]ser[Ss]ettings/
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # [Aa]ssets/AssetStoreTools*
@@ -114,3 +115,11 @@ Desktop.ini
 
 ## Windows shortcuts
 *.lnk
+
+# Ignore Unity window layout files
+UserSettings/Layouts/
+
+# Ignore user-specific files that may include layout settings
+*.wlt
+*.userprefs
+*.suo
