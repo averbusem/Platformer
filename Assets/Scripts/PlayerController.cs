@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     GameObject attack_p;
     public LayerMask enemy;
+    private Player playerComponent;
+    private Color originalColor;
 
     private void Awake()
     {
@@ -23,6 +25,8 @@ public class PlayerController : MonoBehaviour
         spr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
         attack_p = GameObject.FindWithTag("Attack_p");
+        playerComponent = GetComponent<Player>();
+        originalColor = spr.color;
     }
 
     Vector2 move_input; // ось движени€
@@ -102,4 +106,26 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    //  орутин дл€ временного окрашивани€ спрайта в красный цвет
+    private IEnumerator FlashRed()
+    {
+        spr.color = new Color32(255, 105, 105, 255);
+        yield return new WaitForSeconds(0.15f); // «адержка
+        spr.color = originalColor;
+    }
+    public void TakeDamage(int damage) // параметр damage, тк игра может иметь различные источники урона, которые нанос€т разное количество урона (например, слаба€ атака Ч 1, сильна€ атака Ч 2)
+    {
+        playerComponent.Health -= damage;
+        StartCoroutine(FlashRed());
+
+        if (playerComponent.Health <= 0)
+        {
+            // Ћогика смерти игрока 
+        }
+    }
+
+    
+
+
 }
