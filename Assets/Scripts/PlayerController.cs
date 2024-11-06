@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jump_impulse);
         }
-        Debug.Log("� 18 � ������");
+        //Debug.Log("� 18 � ������");
     }
 
     [SerializeField]
@@ -99,8 +99,8 @@ public class PlayerController : MonoBehaviour
                 Collider2D[] damage = Physics2D.OverlapCircleAll(attack_p.transform.position, 2, enemy);
                 foreach (Collider2D col in damage)
                 {
-                    Debug.Log(col + " Damaged");
-                    col.GetComponent<Enemy>().Death();
+                    //Debug.Log(col + " Damaged");
+                    col.GetComponent<Enemy>().TakeDamage(1);
                 }
                 anim.SetTrigger("Sword");
                 StartCoroutine(Sword_Reload());
