@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float movement_speed = 300;
     private bool isSwordReloading= false;
     private float reloadTime = 0.255f;
+    private bool isDead = false;
+
 
     Rigidbody2D rb;
     CollisionTouchCheck col_touch_check;
@@ -15,6 +17,8 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     GameObject attack_p;
     public LayerMask enemy;
+    private Player playerComponent;
+    private Color originalColor;
 
     private void Awake()
     {
@@ -23,6 +27,8 @@ public class PlayerController : MonoBehaviour
         spr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
         attack_p = GameObject.FindWithTag("Attack_p");
+        playerComponent = GetComponent<Player>();
+        originalColor = spr.color;
     }
 
     Vector2 move_input; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
@@ -56,7 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jump_impulse);
         }
-        Debug.Log("пїЅ 18 пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
+        //Debug.Log("пїЅ 18 пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
     }
 
     [SerializeField]
@@ -95,12 +101,44 @@ public class PlayerController : MonoBehaviour
                 Collider2D[] damage = Physics2D.OverlapCircleAll(attack_p.transform.position, 2, enemy);
                 foreach (Collider2D col in damage)
                 {
-                    Debug.Log(col + " Damaged");
-                    col.GetComponent<Enemy>().Death();
+                    //Debug.Log(col + " Damaged");
+                    col.GetComponent<Enemy>().TakeDamage(1);
                 }
                 anim.SetTrigger("Sword");
                 StartCoroutine(Sword_Reload());
             }
         }
     }
+
+    // Корутина для временного окрашивания спрайта в красный цвет
+    private IEnumerator FlashRed()
+    {
+        spr.color = new Color32(255, 105, 105, 255);
+        yield return new WaitForSeconds(0.15f); // Задержка
+        spr.color = originalColor;
+    }
+    public void TakeDamage(int damage)
+    {
+        if (isDead) return;
+
+        playerComponent.Health -= damage;
+        StartCoroutine(FlashRed());
+
+        if (playerComponent.Health <= 0)
+        {
+            // Логика смерти игрока
+            isDead = true;
+
+            // Устанавливаем y-координату спрайта на фиксированное значение (выравниваем спрайт по нижней границе коллайдера)
+            Transform spriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
+            spriteTransform.localPosition = new Vector3(spriteTransform.localPosition.x, -0.0422f, spriteTransform.localPosition.z);
+
+            anim.SetTrigger("Die");
+        }
+    }
+
+
+
+
+
 }

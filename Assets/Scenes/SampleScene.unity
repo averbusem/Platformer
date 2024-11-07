@@ -133,9 +133,9 @@ GameObject:
   - component: {fileID: 1221846}
   - component: {fileID: 1221847}
   - component: {fileID: 1221848}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wizard
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -779,6 +779,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxFactor: 0.1
+--- !u!4 &348536202 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1930376909823642201, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
+  m_PrefabInstance: {fileID: 1107411418769206663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &348802474
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +992,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2843,6 +2848,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939286515}
   m_CullTransparentMesh: 1
+--- !u!1 &1953032120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1953032121}
+  m_Layer: 7
+  m_Name: Attack_gp
+  m_TagString: Attack_gp
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1953032121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953032120}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.122, y: -0.096, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 348536202}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2066182519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,7 +2888,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2066182520}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Attack_point
   m_TagString: Attack_p
   m_Icon: {fileID: 0}
@@ -2889,7 +2925,7 @@ GameObject:
   - component: {fileID: 2077400133}
   - component: {fileID: 2077400132}
   - component: {fileID: 2077400134}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3220,9 +3256,16 @@ PrefabInstance:
       propertyPath: enemy.m_Bits
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 7251855989770412941, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
+      propertyPath: player_layer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1930376909823642201, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1953032121}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
 --- !u!1660057539 &9223372036854775807
