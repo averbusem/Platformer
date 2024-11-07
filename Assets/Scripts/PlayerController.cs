@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float movement_speed = 300;
     private bool isSwordReloading= false;
     private float reloadTime = 0.255f;
+    private bool isDead = false;
+
 
     Rigidbody2D rb;
     CollisionTouchCheck col_touch_check;
@@ -117,12 +119,16 @@ public class PlayerController : MonoBehaviour
     }
     public void TakeDamage(int damage) // параметр damage, тк игра может иметь различные источники урона, которые наносят разное количество урона (например, слабая атака — 1, сильная атака — 2)
     {
+        if (isDead) return;
+
         playerComponent.Health -= damage;
         StartCoroutine(FlashRed());
 
         if (playerComponent.Health <= 0)
         {
-            // Логика смерти игрока 
+            // Логика смерти игрока
+            isDead = true;
+            anim.SetTrigger("Die");
         }
     }
 
