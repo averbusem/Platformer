@@ -110,14 +110,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Корутин для временного окрашивания спрайта в красный цвет
+    // Корутина для временного окрашивания спрайта в красный цвет
     private IEnumerator FlashRed()
     {
         spr.color = new Color32(255, 105, 105, 255);
         yield return new WaitForSeconds(0.15f); // Задержка
         spr.color = originalColor;
     }
-    public void TakeDamage(int damage) // параметр damage, тк игра может иметь различные источники урона, которые наносят разное количество урона (например, слабая атака — 1, сильная атака — 2)
+    public void TakeDamage(int damage)
     {
         if (isDead) return;
 
@@ -128,11 +128,17 @@ public class PlayerController : MonoBehaviour
         {
             // Логика смерти игрока
             isDead = true;
+
+            // Устанавливаем y-координату спрайта на фиксированное значение (выравниваем спрайт по нижней границе коллайдера)
+            Transform spriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
+            spriteTransform.localPosition = new Vector3(spriteTransform.localPosition.x, -0.0422f, spriteTransform.localPosition.z);
+
             anim.SetTrigger("Die");
         }
     }
 
-    
+
+
 
 
 }
