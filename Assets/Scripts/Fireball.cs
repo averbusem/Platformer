@@ -10,6 +10,7 @@ public class Fireball : MonoBehaviour
     private float pos_x;
     private float pos_y;
     Transform trn;
+    Vector2 posi;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -24,7 +25,7 @@ public class Fireball : MonoBehaviour
         if (player != null)
         {
             // Вычисляем направление к цели
-            Vector3 direction = target.position - transform.position;
+            Vector2 direction = posi - transform.position;
             // Вычисляем расстояние до цели
             float distance = direction.magnitude;
             // Если расстояние больше нуля, перемещаем объект
@@ -36,7 +37,7 @@ public class Fireball : MonoBehaviour
                 // Если объект достиг цели, можно, например, остановить его
                 if (moveDirection.magnitude >= distance)
                 {
-                    transform.position = new Vector2(pos_x,pos_y); // Устанавливаем позицию на цель
+                    transform.position = Vector2(pos_x,pos_y); // Устанавливаем позицию на цель
                 }
             }
         }
