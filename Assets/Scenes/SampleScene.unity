@@ -3128,6 +3128,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 13aca74a-b041-4f20-8404-f786bd38552e
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2077400133}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: FireballAtack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b1ae5ed-33a1-42de-936a-f222065f328e
+    m_ActionName: Player/FireballAction[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

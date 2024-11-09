@@ -110,11 +110,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Корутина для временного окрашивания спрайта в красный цвет
+    public void FireballAtack(InputAction.CallbackContext context)
+    {
+        if (context.performed) // проверка, что меч не атакует
+        {
+            Debug.Log("fireball");
+            anim.SetTrigger("Fireball");
+            // Добавьте логику для атаки огненным шаром
+        }
+    }
+
+
     private IEnumerator FlashRed()
     {
         spr.color = new Color32(255, 105, 105, 255);
-        yield return new WaitForSeconds(0.15f); // Задержка
+        yield return new WaitForSeconds(0.15f); // Delay
         spr.color = originalColor;
     }
     public void TakeDamage(int damage)
@@ -126,10 +136,10 @@ public class PlayerController : MonoBehaviour
 
         if (playerComponent.Health <= 0)
         {
-            // Логика смерти игрока
+            // The logic of the player's death
             isDead = true;
 
-            // Устанавливаем y-координату спрайта на фиксированное значение (выравниваем спрайт по нижней границе коллайдера)
+            // Setting the sprite's y-coordinates to a fixed value (align the sprite to the lower boundary of the collider)
             Transform spriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
             spriteTransform.localPosition = new Vector3(spriteTransform.localPosition.x, -0.0422f, spriteTransform.localPosition.z);
 
