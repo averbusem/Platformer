@@ -3266,7 +3266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1163424228241772406, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Goblin
       objectReference: {fileID: 0}
     - target: {fileID: 1930376909823642201, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
       propertyPath: m_LocalPosition.x

@@ -7,6 +7,7 @@ TagManager:
   - Attack_p
   - Attack_gp
   - Enemy
+  - Goblin
   layers:
   - Default
   - TransparentFX
