@@ -1,41 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    private GameObject player;
-    private float speed = 1f;
-    private int damage = 1;
-    private float pos_x;
-    private float pos_y;
-    Transform trn;
-    Vector3 posi;
-    Vector3 direction;
-    void Start()
+    public float speed; 
+    public float lifetime;    
+    public float distance;    
+    public int damage;        
+    public LayerMask isSolid; 
+
+    private float timer; // Timer for tracking the life time of a fireball
+    private void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        trn = player.GetComponent<Transform>();
-        pos_x = player.transform.position.x;
-        pos_y = player.transform.position.y;
-        Vector3 posi = new Vector3(pos_x, pos_y,0);
-        direction = (posi - transform.position) * speed * Time.deltaTime;
+        timer = lifetime;
     }
-    void FixedUpdate()
+
+    private void Update()
     {
-        if (player != null)
+        timer -= Time.deltaTime;
+        if (timer <= 0)
         {
-            transform.position += direction;
-        }
-    }
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
             Destroy(gameObject);
         }
+
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, distance, isSolid);
+        if (hitInfo.collider != null)
+        {
+            if (hitInfo.collider.CompareTag("Goblin"))
+            {
+                hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
+            }
+            Destroy(gameObject);
+        }
+
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 }
-

@@ -5,7 +5,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float movement_speed = 300;
+    private float movement_speed = 300; 
     private bool isSwordReloading= false;
     private float reloadTime = 0.255f;
     private bool isDead = false;
@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemy;
     private Player playerComponent;
     private Color originalColor;
+
+    [SerializeField]
+    private GameObject deathPanel;
 
     private void Awake()
     {
@@ -182,6 +185,8 @@ public class PlayerController : MonoBehaviour
             spriteTransform.localPosition = new Vector3(spriteTransform.localPosition.x, -0.0422f, spriteTransform.localPosition.z);
 
             anim.SetTrigger("Die");
+
+            deathPanel.SetActive(true);
         }
     }
 
