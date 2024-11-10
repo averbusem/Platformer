@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private bool isSwordReloading= false;
     private float reloadTime = 0.255f;
     private bool isDead = false;
-
+    private bool facingRight = true;
 
     Rigidbody2D rb;
     CollisionTouchCheck col_touch_check;
@@ -31,13 +31,21 @@ public class PlayerController : MonoBehaviour
         originalColor = spr.color;
     }
 
-    Vector2 move_input; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    private bool isJumpHeld = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    Vector2 move_input;
+    private bool isJumpHeld = false; 
 
     public void OnMove(InputAction.CallbackContext context)
     {
         move_input = context.ReadValue<Vector2>();
         anim.SetFloat("Speed",Mathf.Abs(move_input.x));
+    }
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
     }
 
     private void FixedUpdate()
@@ -49,20 +57,20 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetTrigger("Jump");
         }
-        if (move_input.x<0)
+        if (move_input.x < 0 && facingRight)
         {
-            spr.flipX = true;
+            Flip();
         }
-        if (move_input.x > 0)
+        else if (move_input.x > 0 && !facingRight)
         {
-            spr.flipX = false;
+            Flip();
         }
-        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+        
         if (col_touch_check.IsGrounded && isJumpHeld)
         {
             rb.velocity = new Vector2(rb.velocity.x, jump_impulse);
         }
-        //Debug.Log("пїЅ 18 пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
+       
     }
 
     [SerializeField]
@@ -82,7 +90,6 @@ public class PlayerController : MonoBehaviour
         if (context.canceled)
         {
             isJumpHeld = false;
-            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.3f);
         }
     }
@@ -110,11 +117,44 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Корутина для временного окрашивания спрайта в красный цвет
+
+    private bool isFireballReloading = false; 
+    public GameObject fireball;
+    public Transform FirePoint;
+    public float fireballDelay;
+    public float reloadTimeFireballAtack;
+    IEnumerator FireballReload()
+    {
+        isFireballReloading = true;
+
+        yield return new WaitForSeconds(fireballDelay);
+
+        // Determine the rotation of the fireball depending on the direction of the character
+        Quaternion rotation = facingRight ? FirePoint.rotation : Quaternion.Euler(0, 180, 0);
+        Instantiate(fireball, FirePoint.position, rotation);
+
+        yield return new WaitForSeconds(reloadTimeFireballAtack);
+        isFireballReloading = false;
+    }
+    public void FireballAtack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (!isFireballReloading)
+            {
+                Debug.Log("fireball");
+                anim.SetTrigger("Fireball");
+                StartCoroutine(FireballReload());
+            }
+        }
+    }
+
+
+
     private IEnumerator FlashRed()
     {
         spr.color = new Color32(255, 105, 105, 255);
-        yield return new WaitForSeconds(0.15f); // Задержка
+        yield return new WaitForSeconds(0.15f); // Delay
         spr.color = originalColor;
     }
     public void TakeDamage(int damage)
@@ -126,10 +166,10 @@ public class PlayerController : MonoBehaviour
 
         if (playerComponent.Health <= 0)
         {
-            // Логика смерти игрока
+            // The logic of the player's death
             isDead = true;
 
-            // Устанавливаем y-координату спрайта на фиксированное значение (выравниваем спрайт по нижней границе коллайдера)
+            // Setting the sprite's y-coordinates to a fixed value (align the sprite to the lower boundary of the collider)
             Transform spriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
             spriteTransform.localPosition = new Vector3(spriteTransform.localPosition.x, -0.0422f, spriteTransform.localPosition.z);
 
