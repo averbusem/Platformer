@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: ce3326307819d6e4497038e63e070108
+guid: 6d7cd4f7505dc674c891ca8946cfd98b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7008412969330441016
-    second: Attack_0
+      213: -4795363162621231457
+    second: Flight_0
   - first:
-      213: -7763475090823894447
-    second: Attack_1
+      213: -3652676412848291748
+    second: Flight_1
   - first:
-      213: 302641331129538988
-    second: Attack_2
+      213: -596950462376016933
+    second: Flight_2
   - first:
-      213: -6329420634031446844
-    second: Attack_3
+      213: -4538786591655478766
+    second: Flight_3
   - first:
-      213: -910092549403018386
-    second: Attack_4
+      213: 8639066506597270619
+    second: Flight_4
   - first:
-      213: 221524225039350300
-    second: Attack_5
+      213: -4262185617143388622
+    second: Flight_5
   - first:
-      213: 1290532464073988732
-    second: Attack_6
+      213: 5066340549283584134
+    second: Flight_6
   - first:
-      213: 4780903288873104255
-    second: Attack_7
+      213: 7784096630628774620
+    second: Flight_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -156,11 +156,37 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: Flight_0
       rect:
         serializedVersion: 2
         x: 0
@@ -174,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5629b882b296d3545944b1b4aac3b546
-      internalID: -7008412969330441016
+      spriteID: 4b60f3b428266f641882fff33b3d5e5a
+      internalID: -4795363162621231457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: Flight_1
       rect:
         serializedVersion: 2
         x: 150
@@ -195,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d42017a2ce573c47b6dde82ab24a7f0
-      internalID: -7763475090823894447
+      spriteID: 10226d6044353eb4fa948bd574ea736f
+      internalID: -3652676412848291748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_2
+      name: Flight_2
       rect:
         serializedVersion: 2
         x: 300
@@ -216,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 726861b7fc3e7c247a3fe1c1d9508b81
-      internalID: 302641331129538988
+      spriteID: 0ad4b872376ed3e4486247ba89b9be8d
+      internalID: -596950462376016933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_3
+      name: Flight_3
       rect:
         serializedVersion: 2
         x: 450
@@ -237,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 082d9bd8547ba0745975a6ef1ef2e6c4
-      internalID: -6329420634031446844
+      spriteID: 6175273388504464690a5ffdb4b6e945
+      internalID: -4538786591655478766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_4
+      name: Flight_4
       rect:
         serializedVersion: 2
         x: 600
@@ -258,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1aa2225fd34196f46a6a65bb9b043303
-      internalID: -910092549403018386
+      spriteID: 2b82a24c2d9256047b65475093a49a14
+      internalID: 8639066506597270619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_5
+      name: Flight_5
       rect:
         serializedVersion: 2
         x: 750
@@ -279,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50ab541e88a5d5345a30a9ff7c4adfc7
-      internalID: 221524225039350300
+      spriteID: b03cc7e3212354449903d7c9f940e356
+      internalID: -4262185617143388622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_6
+      name: Flight_6
       rect:
         serializedVersion: 2
         x: 900
@@ -300,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b61f46898963364fbe03e32b016afbc
-      internalID: 1290532464073988732
+      spriteID: 9d78b014b5797f54bb5585f62835f8ab
+      internalID: 5066340549283584134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_7
+      name: Flight_7
       rect:
         serializedVersion: 2
         x: 1050
@@ -321,8 +347,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33483619b461ea544ab83c82346be54a
-      internalID: 4780903288873104255
+      spriteID: 33f8db84057f2e143a48f74752555df2
+      internalID: 7784096630628774620
       vertices: []
       indices: 
       edges: []
@@ -338,14 +364,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: -7008412969330441016
-      Attack_1: -7763475090823894447
-      Attack_2: 302641331129538988
-      Attack_3: -6329420634031446844
-      Attack_4: -910092549403018386
-      Attack_5: 221524225039350300
-      Attack_6: 1290532464073988732
-      Attack_7: 4780903288873104255
+      Flight_0: -4795363162621231457
+      Flight_1: -3652676412848291748
+      Flight_2: -596950462376016933
+      Flight_3: -4538786591655478766
+      Flight_4: 8639066506597270619
+      Flight_5: -4262185617143388622
+      Flight_6: 5066340549283584134
+      Flight_7: 7784096630628774620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

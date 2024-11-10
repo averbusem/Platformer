@@ -109,7 +109,15 @@ public class PlayerController : MonoBehaviour
                 foreach (Collider2D col in damage)
                 {
                     //Debug.Log(col + " Damaged");
-                    col.GetComponent<Enemy>().TakeDamage(1);
+                    if (col.gameObject.CompareTag("Goblin"))
+                    {
+                        col.GetComponent<Enemy>().TakeDamage(1);
+                    }
+                    if (col.gameObject.CompareTag("Flight"))
+                    {
+                        Debug.Log("Flight");
+                        col.GetComponent<EnemyFlight>().TakeDamage(1);
+                    }
                 }
                 anim.SetTrigger("Sword");
                 StartCoroutine(Sword_Reload());

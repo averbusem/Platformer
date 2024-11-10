@@ -1,12 +1,36 @@
 fileFormatVersion: 2
-guid: 99c385bf05c5279499f4e0409f8c31ee
+guid: 1cdda3433b000ea4380d9a694325f55c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4795363162621231457
+    second: Flight_0
+  - first:
+      213: -3652676412848291748
+    second: Flight_1
+  - first:
+      213: -596950462376016933
+    second: Flight_2
+  - first:
+      213: -4538786591655478766
+    second: Flight_3
+  - first:
+      213: 8639066506597270619
+    second: Flight_4
+  - first:
+      213: -4262185617143388622
+    second: Flight_5
+  - first:
+      213: 5066340549283584134
+    second: Flight_6
+  - first:
+      213: 7784096630628774620
+    second: Flight_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -63,9 +87,9 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -82,6 +106,45 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,253 +186,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Charge_0
+      name: Flight_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 26
-        width: 11
-        height: 9
+        x: 0
+        y: 0
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3f4ce306087e2440bde971701600a8f
-      internalID: -252489571
+      spriteID: 4b60f3b428266f641882fff33b3d5e5a
+      internalID: -4795363162621231457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charge_1
+      name: Flight_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 150
         y: 0
-        width: 64
-        height: 64
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 394ae590cd29ea548a853d1bf393c0af
-      internalID: -1597574940
+      spriteID: 10226d6044353eb4fa948bd574ea736f
+      internalID: -3652676412848291748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charge_2
+      name: Flight_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 300
         y: 0
-        width: 64
-        height: 64
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e85a75ea846885a4e984c8e22b2b637b
-      internalID: 1815261226
+      spriteID: 0ad4b872376ed3e4486247ba89b9be8d
+      internalID: -596950462376016933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charge_3
+      name: Flight_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 450
         y: 0
-        width: 64
-        height: 64
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 500b473003aa0394db3341e2497252c6
-      internalID: -369795436
+      spriteID: 6175273388504464690a5ffdb4b6e945
+      internalID: -4538786591655478766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charge_4
+      name: Flight_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 600
         y: 0
-        width: 64
-        height: 64
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ea54436b64455b4785dcd7e6efdec67
-      internalID: -827473752
+      spriteID: 2b82a24c2d9256047b65475093a49a14
+      internalID: 8639066506597270619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charge_5
+      name: Flight_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 750
         y: 0
-        width: 64
-        height: 64
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 597a7092b42708c4088183eef2b36602
-      internalID: -188630587
+      spriteID: b03cc7e3212354449903d7c9f940e356
+      internalID: -4262185617143388622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charge_6
+      name: Flight_6
       rect:
         serializedVersion: 2
-        x: 384
+        x: 900
         y: 0
-        width: 64
-        height: 64
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 818bce7c55d8e184ca704c4467f5f890
-      internalID: -1687741801
+      spriteID: 9d78b014b5797f54bb5585f62835f8ab
+      internalID: 5066340549283584134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charge_7
+      name: Flight_7
       rect:
         serializedVersion: 2
-        x: 448
+        x: 1050
         y: 0
-        width: 64
-        height: 64
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ca8eb454611a6c49825fc40b1727918
-      internalID: 1835133261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Charge_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae0b8a96d8d8a56469a0e8c114c56c2a
-      internalID: 2003324400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Charge_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e2ba00739f9bec4eb9b348d9ec5948c
-      internalID: 1812448572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Charge_10
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe37c1cf4845532468b094b5842b06af
-      internalID: -927687663
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Charge_11
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 727b5e3bdf347de408eba5ecb06817f7
-      internalID: -1294510083
+      spriteID: 33f8db84057f2e143a48f74752555df2
+      internalID: 7784096630628774620
       vertices: []
       indices: 
       edges: []
@@ -385,18 +364,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Charge_0: -252489571
-      Charge_1: -1597574940
-      Charge_10: -927687663
-      Charge_11: -1294510083
-      Charge_2: 1815261226
-      Charge_3: -369795436
-      Charge_4: -827473752
-      Charge_5: -188630587
-      Charge_6: -1687741801
-      Charge_7: 1835133261
-      Charge_8: 2003324400
-      Charge_9: 1812448572
+      Flight_0: -4795363162621231457
+      Flight_1: -3652676412848291748
+      Flight_2: -596950462376016933
+      Flight_3: -4538786591655478766
+      Flight_4: 8639066506597270619
+      Flight_5: -4262185617143388622
+      Flight_6: 5066340549283584134
+      Flight_7: 7784096630628774620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
