@@ -980,9 +980,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: e9ef343db6b3a5640aeceabd05f07524, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 3b6cc025d42c2f64eb9147a391ba3bc0, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 3878851387116946075, guid: e9ef343db6b3a5640aeceabd05f07524, type: 2}
+  - m_Target: {fileID: 4384248947717182909, guid: 3b6cc025d42c2f64eb9147a391ba3bc0, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -1087,8 +1087,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Prefabs
   m_LastFoldersGridSize: 96
-  m_LastProjectPath: "C:\\Users\\Masterfar\\Desktop\\\u041D\u043E\u0432\u0430\u044F
-    \u043F\u0430\u043F\u043A\u0430\\Platformer"
+  m_LastProjectPath: "D:\\\u0421\u0435\u043C\u0451\u043D\\\u0412\u0428\u042D\\2 \u043A\u0443\u0440\u0441\\Unity\\Projects\\Platformer"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -1220,7 +1219,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 453
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
