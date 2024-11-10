@@ -6,8 +6,9 @@ TagManager:
   tags:
   - Attack_p
   - Attack_gp
-  - Enemy
+  - Flight
   - Goblin
+  - Ground
   layers:
   - Default
   - TransparentFX
