@@ -24,21 +24,12 @@ public class Fireball : MonoBehaviour
         // Проверяем, что цель задана
         if (player != null)
         {
-            // Вычисляем направление к цели
             Vector2 direction = posi - transform.position;
-            // Вычисляем расстояние до цели
             float distance = direction.magnitude;
-            // Если расстояние больше нуля, перемещаем объект
             if (distance > 0)
             {
-                // Нормализуем направление и перемещаем объект
-                Vector3 moveDirection = direction.normalized * speed * Time.deltaTime;
+                Vector2 moveDirection = direction.normalized * speed * Time.deltaTime;
                 transform.position += moveDirection;
-                // Если объект достиг цели, можно, например, остановить его
-                if (moveDirection.magnitude >= distance)
-                {
-                    transform.position = Vector2(pos_x,pos_y); // Устанавливаем позицию на цель
-                }
             }
         }
     }
