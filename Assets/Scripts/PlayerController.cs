@@ -118,15 +118,38 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    private bool isFireballReloading = false; 
+    public GameObject fireball;
+    public Transform FirePoint;
+    public float fireballDelay;
+    IEnumerator FireballReload()
+    {
+        isFireballReloading = true;
+
+        // Р–РґРµРј РѕРєРѕРЅС‡Р°РЅРёСЏ Р°РЅРёРјР°С†РёРё РїРµСЂРµРґ РІС‹СЃС‚СЂРµР»РѕРј
+        yield return new WaitForSeconds(fireballDelay);
+
+        // Determine the rotation of the fireball depending on the direction of the character
+        Quaternion rotation = facingRight ? FirePoint.rotation : Quaternion.Euler(0, 180, 0);
+        Instantiate(fireball, FirePoint.position, rotation);
+
+        yield return new WaitForSeconds(1);
+        isFireballReloading = false;
+    }
     public void FireballAtack(InputAction.CallbackContext context)
     {
-        if (context.performed) // проверка, что меч не атакует
+        if (context.performed)
         {
-            Debug.Log("fireball");
-            anim.SetTrigger("Fireball");
-            // Добавьте логику для атаки огненным шаром
+            if (!isFireballReloading)
+            {
+                Debug.Log("fireball");
+                anim.SetTrigger("Fireball");
+                StartCoroutine(FireballReload());
+            }
         }
     }
+
 
 
     private IEnumerator FlashRed()
