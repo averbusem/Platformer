@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
         originalColor = spr.color;
     }
 
-    Vector2 move_input; // ��� ��������
-    private bool isJumpHeld = false; // ������������ �� ������ ������
+    Vector2 move_input;
+    private bool isJumpHeld = false; 
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -90,7 +90,6 @@ public class PlayerController : MonoBehaviour
         if (context.canceled)
         {
             isJumpHeld = false;
-            // ���� ��������� ������, ��������� �������� ������
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.3f);
         }
     }
@@ -123,18 +122,18 @@ public class PlayerController : MonoBehaviour
     public GameObject fireball;
     public Transform FirePoint;
     public float fireballDelay;
+    public float reloadTimeFireballAtack;
     IEnumerator FireballReload()
     {
         isFireballReloading = true;
 
-        // Ждем окончания анимации перед выстрелом
         yield return new WaitForSeconds(fireballDelay);
 
         // Determine the rotation of the fireball depending on the direction of the character
         Quaternion rotation = facingRight ? FirePoint.rotation : Quaternion.Euler(0, 180, 0);
         Instantiate(fireball, FirePoint.position, rotation);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(reloadTimeFireballAtack);
         isFireballReloading = false;
     }
     public void FireballAtack(InputAction.CallbackContext context)
