@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     private Player playerComponent;
     private Color originalColor;
 
+    [SerializeField]
+    private GameObject deathPanel;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -174,6 +177,8 @@ public class PlayerController : MonoBehaviour
             spriteTransform.localPosition = new Vector3(spriteTransform.localPosition.x, -0.0422f, spriteTransform.localPosition.z);
 
             anim.SetTrigger("Die");
+
+            deathPanel.SetActive(true);
         }
     }
 
