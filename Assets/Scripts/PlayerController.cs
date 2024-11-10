@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private bool isSwordReloading= false;
     private float reloadTime = 0.255f;
     private bool isDead = false;
-
+    private bool facingRight = true;
 
     Rigidbody2D rb;
     CollisionTouchCheck col_touch_check;
@@ -40,6 +40,14 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Speed",Mathf.Abs(move_input.x));
     }
 
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
+    }
+
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(move_input.x * movement_speed * Time.fixedDeltaTime, rb.velocity.y);
@@ -49,20 +57,20 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetTrigger("Jump");
         }
-        if (move_input.x<0)
+        if (move_input.x < 0 && facingRight)
         {
-            spr.flipX = true;
+            Flip();
         }
-        if (move_input.x > 0)
+        else if (move_input.x > 0 && !facingRight)
         {
-            spr.flipX = false;
+            Flip();
         }
-        // ���� ������ ������ ������������ � �������� �������� �����, ��������� ������
+        
         if (col_touch_check.IsGrounded && isJumpHeld)
         {
             rb.velocity = new Vector2(rb.velocity.x, jump_impulse);
         }
-        //Debug.Log("� 18 � ������");
+       
     }
 
     [SerializeField]
