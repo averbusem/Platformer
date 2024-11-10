@@ -31,6 +31,10 @@ public class Fireball : MonoBehaviour
             {
                 hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
             }
+            else if (hitInfo.collider.CompareTag("Flight"))
+            {
+                hitInfo.collider.GetComponent<EnemyFlight>().TakeDamage(damage);
+            }
             Destroy(gameObject);
         }
 

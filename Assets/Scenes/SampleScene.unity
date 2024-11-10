@@ -4284,7 +4284,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 348536202}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1965022263
 GameObject:
@@ -4734,7 +4734,7 @@ MonoBehaviour:
     m_Bits: 128
   deathPanel: {fileID: 159768625}
   jump_impulse: 8
-  fireball: {fileID: 2873093660421648674, guid: c1d95723706313d4db8be0d81f82d11f, type: 3}
+  fireball: {fileID: 789524285123243190, guid: 65b1eac072b783c40b7bfe5eef489f59, type: 3}
   FirePoint: {fileID: 374532924}
   fireballDelay: 0.5
   reloadTimeFireballAtack: 4
@@ -4774,18 +4774,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flight
       objectReference: {fileID: 0}
-    - target: {fileID: 1163424228241772406, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1163424228241772406, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
-      propertyPath: m_TagString
-      value: Goblin
-      objectReference: {fileID: 0}
-    - target: {fileID: 1930376909823642201, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.27
-      objectReference: {fileID: 0}
     - target: {fileID: 7620170952533753633, guid: e9d1670f624be1a4b92d9d1172394ed3, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.53
@@ -4821,6 +4809,18 @@ PrefabInstance:
     - target: {fileID: 7620170952533753633, guid: e9d1670f624be1a4b92d9d1172394ed3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163424228241772406, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163424228241772406, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
+      propertyPath: m_TagString
+      value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930376909823642201, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4906,5 +4906,7 @@ SceneRoots:
   - {fileID: 4383152081099745765}
   - {fileID: 1074368102}
   - {fileID: 348802476}
-  - {fileID: 339326935}
   - {fileID: 660373305456414199}
+  - {fileID: 1232738962}
+  - {fileID: 1800630326}
+  - {fileID: 1953032121}
