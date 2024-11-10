@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball_enemy : MonoBehaviour
 {
     private GameObject player;
     private float speed = 1f;
