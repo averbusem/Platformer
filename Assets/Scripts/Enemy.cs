@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private float dist = 2.5f;
     private bool reload=false;
     private bool isDead=false;
+    private bool isFacingRight = true;
     private int health = 2;
     float pos_x;
     private Vector2 dir = Vector2.right;
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour
             if (Vector2.Distance(player.transform.position, transform.position) < 2.5f)
             {
                 speed = 0;
+                isFacingPlayer();
                 anim.SetFloat("Speed", Mathf.Abs(speed));
                 if (!reload)
                 {
@@ -52,6 +54,7 @@ public class Enemy : MonoBehaviour
                 else
                 {
                     spt.flipX = !spt.flipX;
+                    isFacingRight = !isFacingRight;
                     anim.SetFloat("Speed", Mathf.Abs(speed));
                     if(dir==Vector2.left)
                     {
@@ -82,7 +85,6 @@ public class Enemy : MonoBehaviour
         Collider2D[] damage = Physics2D.OverlapCircleAll(attack_gp.transform.position, 3, player_layer);
         foreach (Collider2D col in damage)
         {
-            Debug.Log("Shot");
             col.GetComponent<PlayerController>().TakeDamage(1);
         }
     }
@@ -100,5 +102,18 @@ public class Enemy : MonoBehaviour
         anim.SetTrigger("Death");
         isDead = true;
         rb.simulated = false;
+    }
+    private void isFacingPlayer()
+    {
+        if (player.transform.position.x > transform.position.x && !isFacingRight)
+        {
+            spt.flipX = !spt.flipX;
+            isFacingRight = !isFacingRight;
+        }
+        if (player.transform.position.x < transform.position.x && isFacingRight)
+        {
+            spt.flipX = !spt.flipX;
+            isFacingRight = !isFacingRight;
+        }
     }
 }

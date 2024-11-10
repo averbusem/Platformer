@@ -8,6 +8,7 @@ public class EnemyFlight : MonoBehaviour
     private float dist = 2.5f;
     private bool reload=false;
     private bool isDead=false;
+    private bool isFacingRight = true;
     private int health = 2;
     float pos_x;
     private Vector2 dir = Vector2.right;
@@ -16,6 +17,8 @@ public class EnemyFlight : MonoBehaviour
     SpriteRenderer spt;
     GameObject player;
     GameObject attack_gp;
+    Transform trn;
+    public GameObject fb;
     public LayerMask player_layer;
     void Start()
     {
@@ -25,6 +28,7 @@ public class EnemyFlight : MonoBehaviour
         spt = GetComponent<SpriteRenderer>();
         player = GameObject.FindWithTag("Player");
         attack_gp = GameObject.FindWithTag("Attack_gp");
+        trn=GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -32,13 +36,14 @@ public class EnemyFlight : MonoBehaviour
     {
         if (!isDead)
         {
-            if (Vector2.Distance(player.transform.position, transform.position) < 2.5f)
+            if (Vector2.Distance(player.transform.position, transform.position) < 5f)
             {
+                isFacingPlayer();
                 speed = 0;
                 //anim.SetFloat("Speed", Mathf.Abs(speed));
                 if (!reload)
                 {
-                    //Attack1();
+                    Attack1();
                 }
             }
             else
@@ -52,6 +57,7 @@ public class EnemyFlight : MonoBehaviour
                 else
                 {
                     spt.flipX = !spt.flipX;
+                    isFacingRight = !isFacingRight;
                     //anim.SetFloat("Speed", Mathf.Abs(speed));
                     if(dir==Vector2.left)
                     {
@@ -75,7 +81,7 @@ public class EnemyFlight : MonoBehaviour
    
     private void Attack1()
     {
-        
+        Instantiate(fb, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0,0,0));
         StartCoroutine(Reload());
     }
     /*
@@ -100,8 +106,32 @@ public class EnemyFlight : MonoBehaviour
     }
     public void Death()
     {
-        anim.SetTrigger("Death");
+        anim.SetBool("Death",true);
         isDead = true;
+        rb.gravityScale = 1.0f;
+    }
+    public void Troop()
+    {
         rb.simulated = false;
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ground") && isDead)
+        {
+            anim.SetFloat("Troop", 1);
+        }
+    }
+    private void isFacingPlayer()
+    {
+        if(player.transform.position.x>transform.position.x && !isFacingRight) 
+        {
+            spt.flipX = !spt.flipX;
+            isFacingRight = !isFacingRight;
+        }
+        if (player.transform.position.x < transform.position.x && isFacingRight)
+        {
+            spt.flipX = !spt.flipX;
+            isFacingRight = !isFacingRight;
+        }
     }
 }
