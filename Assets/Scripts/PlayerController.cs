@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (isDead) return;
         move_input = context.ReadValue<Vector2>();
         anim.SetFloat("Speed",Mathf.Abs(move_input.x));
     }
@@ -53,6 +54,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDead)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         rb.velocity = new Vector2(move_input.x * movement_speed * Time.fixedDeltaTime, rb.velocity.y);
         anim.SetFloat("ySpeed", rb.velocity.y);
         anim.SetBool("OnGround", col_touch_check.IsGrounded);
@@ -81,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (isDead) return;
         if (context.started)
         {
             isJumpHeld = true;
@@ -104,6 +111,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Sword_Attack(InputAction.CallbackContext context)
     {
+        if (isDead) return;
         if (context.performed)
         {
             if (!isSwordReloading)
@@ -149,6 +157,7 @@ public class PlayerController : MonoBehaviour
     }
     public void FireballAtack(InputAction.CallbackContext context)
     {
+        if (isDead) return;
         if (context.performed)
         {
             if (!isFireballReloading)
@@ -171,7 +180,6 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isDead) return;
-
         playerComponent.Health -= damage;
         StartCoroutine(FlashRed());
 
@@ -179,7 +187,6 @@ public class PlayerController : MonoBehaviour
         {
             // The logic of the player's death
             isDead = true;
-
             // Setting the sprite's y-coordinates to a fixed value (align the sprite to the lower boundary of the collider)
             Transform spriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
             spriteTransform.localPosition = new Vector3(spriteTransform.localPosition.x, -0.0422f, spriteTransform.localPosition.z);
