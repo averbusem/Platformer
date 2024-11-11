@@ -17,6 +17,12 @@ public class Player : MonoBehaviour
     private Sprite emptyHeart;
 
 
+    public int Health
+    {
+        get { return health; }
+        set { health = Mathf.Clamp(value, 0, numOfHearts); } // Устанавливаем здоровье с ограничениями
+    }
+
     private void FixedUpdate()
     {
         if(health > numOfHearts)

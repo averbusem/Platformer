@@ -5,11 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Attack_p
+  - Attack_gp
+  - Flight
+  - Goblin
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground
