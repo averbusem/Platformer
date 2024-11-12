@@ -4051,7 +4051,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1232738963}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
@@ -4369,7 +4369,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1232738963}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 1
@@ -4734,7 +4734,7 @@ MonoBehaviour:
     m_Bits: 128
   deathPanel: {fileID: 159768625}
   jump_impulse: 8
-  fireball: {fileID: 789524285123243190, guid: 65b1eac072b783c40b7bfe5eef489f59, type: 3}
+  fireball: {fileID: 789524285123243190, guid: 2f0f3d766f0e4e64396aabe9ef0e5384, type: 3}
   FirePoint: {fileID: 374532924}
   fireballDelay: 0.5
   reloadTimeFireballAtack: 4
