@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
             audioManager.StopFallingSound();
         }
 
-        if (!col_touch_check.IsGrounded && rb.velocity.y > 0)
+        if (!col_touch_check.IsGrounded && rb.velocity.y >= 0)
         {
             audioManager.PlayFlyingSound();
         }

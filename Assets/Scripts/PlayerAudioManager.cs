@@ -7,24 +7,39 @@ public class PlayerAudioManager : MonoBehaviour
     [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip swordAttackClip;
     [SerializeField] private AudioClip fireballClip;
-    [SerializeField] private AudioClip movementClip;   
+    [SerializeField] private AudioClip movementClip;
     [SerializeField] private AudioClip takeDamageClip;
     [SerializeField] private AudioClip landingClip;
     [SerializeField] private AudioClip fallingClip;
     [SerializeField] private AudioClip flyingClip;
-    private AudioSource audioSource;
+
+    private List<AudioSource> audioSources = new List<AudioSource>(); // List to store multiple AudioSources
+
     private bool isPlayingMovementSound = false;
     private bool isPlayingFallingSound = false;
     private bool isPlayingFlyingSound = false;
+
     public bool IsPlayingFallingSound => isPlayingFallingSound;
     public bool IsPlayingFlyingSound => isPlayingFlyingSound;
+
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
+        // Create an AudioSource for each sound effect
+        CreateAudioSource(jumpClip);
+        CreateAudioSource(swordAttackClip);
+        CreateAudioSource(fireballClip);
+        CreateAudioSource(movementClip);
+        CreateAudioSource(takeDamageClip);
+        CreateAudioSource(landingClip);
+        CreateAudioSource(fallingClip);
+        CreateAudioSource(flyingClip);
+    }
+
+    private void CreateAudioSource(AudioClip clip)
+    {
+        AudioSource newSource = gameObject.AddComponent<AudioSource>();
+        newSource.clip = clip;
+        audioSources.Add(newSource);
     }
 
     public void PlayJumpSound()
@@ -46,9 +61,7 @@ public class PlayerAudioManager : MonoBehaviour
     {
         if (!isPlayingMovementSound && movementClip != null)
         {
-            audioSource.clip = movementClip;
-            audioSource.loop = true;
-            audioSource.Play();
+            PlaySound(movementClip, true);  // Loop movement sound
             isPlayingMovementSound = true;
         }
     }
@@ -57,7 +70,7 @@ public class PlayerAudioManager : MonoBehaviour
     {
         if (isPlayingMovementSound)
         {
-            audioSource.Stop();
+            StopSound(movementClip);
             isPlayingMovementSound = false;
         }
     }
@@ -71,11 +84,12 @@ public class PlayerAudioManager : MonoBehaviour
     {
         PlaySound(landingClip);
     }
+
     public void PlayFallingSound()
     {
         if (!isPlayingFallingSound && fallingClip != null)
         {
-            audioSource.PlayOneShot(fallingClip);  // Используем PlayOneShot
+            PlaySound(fallingClip);
             isPlayingFallingSound = true;
             Debug.Log("Falling sound played");
         }
@@ -85,8 +99,7 @@ public class PlayerAudioManager : MonoBehaviour
     {
         if (isPlayingFallingSound)
         {
-            audioSource.Stop();
-            audioSource.loop = false;
+            StopSound(fallingClip);
             isPlayingFallingSound = false;
         }
     }
@@ -95,9 +108,8 @@ public class PlayerAudioManager : MonoBehaviour
     {
         if (!isPlayingFlyingSound && flyingClip != null)
         {
-            audioSource.PlayOneShot(flyingClip);  
+            PlaySound(flyingClip);
             isPlayingFlyingSound = true;
-            //Debug.Log("Flying sound played");
         }
     }
 
@@ -105,15 +117,33 @@ public class PlayerAudioManager : MonoBehaviour
     {
         if (isPlayingFlyingSound)
         {
-            audioSource.Stop();
+            StopSound(flyingClip);
             isPlayingFlyingSound = false;
         }
     }
-    private void PlaySound(AudioClip clip)
+
+    private void PlaySound(AudioClip clip, bool loop = false)
     {
-        if (clip != null)
+        foreach (var source in audioSources)
         {
-            audioSource.PlayOneShot(clip);
+            if (source.clip == clip && !source.isPlaying)
+            {
+                source.loop = loop;
+                source.Play();
+                break;
+            }
+        }
+    }
+
+    private void StopSound(AudioClip clip)
+    {
+        foreach (var source in audioSources)
+        {
+            if (source.clip == clip && source.isPlaying)
+            {
+                source.Stop();
+                break;
+            }
         }
     }
 }
