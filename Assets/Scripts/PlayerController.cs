@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float reloadTime = 0.255f;
     private bool isDead = false;
     private bool facingRight = true;
+    private bool wasGrounded = true;
 
     Rigidbody2D rb;
     CollisionTouchCheck col_touch_check;
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemy;
     private Player playerComponent;
     private Color originalColor;
-
+    [SerializeField] private PlayerAudioManager audioManager;
     [SerializeField]
     private GameObject deathPanel;
 
@@ -42,6 +43,12 @@ public class PlayerController : MonoBehaviour
         if (isDead) return;
         move_input = context.ReadValue<Vector2>();
         anim.SetFloat("Speed",Mathf.Abs(move_input.x));
+
+        if (Mathf.Abs(move_input.x) > 0 && col_touch_check.IsGrounded)
+            audioManager.PlayMovementSound();
+        else
+            audioManager.StopMovementSound();
+
     }
 
     private void Flip()
@@ -62,10 +69,46 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(move_input.x * movement_speed * Time.fixedDeltaTime, rb.velocity.y);
         anim.SetFloat("ySpeed", rb.velocity.y);
         anim.SetBool("OnGround", col_touch_check.IsGrounded);
-        if(Mathf.Abs(rb.velocity.y)>0.1)
+        // Sounds ===============================
+        if (!col_touch_check.IsGrounded && rb.velocity.y < -0.1f)
+        {
+            audioManager.PlayFallingSound();
+        }
+        else
+        {
+            audioManager.StopFallingSound();
+        }
+
+        if (!col_touch_check.IsGrounded && rb.velocity.y > 0)
+        {
+            audioManager.PlayFlyingSound();
+        }
+        else
+        {
+            audioManager.StopFlyingSound();
+        }
+
+        if (!wasGrounded && col_touch_check.IsGrounded)
+        {
+            audioManager.PlayLandingSound();
+        }
+
+        if (!wasGrounded && col_touch_check.IsGrounded && Mathf.Abs(move_input.x) > 0)
+        {
+            audioManager.PlayMovementSound();
+        }
+        else if (!col_touch_check.IsGrounded || Mathf.Abs(move_input.x) == 0)
+        {
+            audioManager.StopMovementSound();
+        }
+
+        wasGrounded = col_touch_check.IsGrounded;
+        // End Sounds ===============================
+        if (Mathf.Abs(rb.velocity.y)>0.1)
         {
             anim.SetTrigger("Jump");
         }
+ 
         if (move_input.x < 0 && facingRight)
         {
             Flip();
@@ -93,6 +136,7 @@ public class PlayerController : MonoBehaviour
             isJumpHeld = true;
             if (col_touch_check.IsGrounded)
             {
+                audioManager.PlayJumpSound();
                 rb.velocity = new Vector2(rb.velocity.x, jump_impulse);
             }
         }
@@ -131,6 +175,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 anim.SetTrigger("Sword");
+                audioManager.PlaySwordAttackSound();
                 StartCoroutine(Sword_Reload());
             }
         }
@@ -162,8 +207,8 @@ public class PlayerController : MonoBehaviour
         {
             if (!isFireballReloading)
             {
-                Debug.Log("fireball");
                 anim.SetTrigger("Fireball");
+                audioManager.PlayFireballSound();
                 StartCoroutine(FireballReload());
             }
         }
@@ -182,7 +227,7 @@ public class PlayerController : MonoBehaviour
         if (isDead) return;
         playerComponent.Health -= damage;
         StartCoroutine(FlashRed());
-
+        audioManager.PlayTakeDamageSound();
         if (playerComponent.Health <= 0)
         {
             // The logic of the player's death
