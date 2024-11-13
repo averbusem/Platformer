@@ -12,17 +12,6 @@ public class PauseMenu : MonoBehaviour
     private GameObject gameUI;
     private bool isPaused = false;
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-            Destroy(gameObject);
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -54,8 +43,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        Destroy(GameObject.Find("PauseMenu"));
-        Destroy(GameObject.Find("GameUI"));
+        FindObjectOfType<CoinManager>().ResetLevelCoins();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

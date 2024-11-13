@@ -227,6 +227,7 @@ public class PlayerController : MonoBehaviour
         {
             // The logic of the player's death
             isDead = true;
+            FindObjectOfType<CoinManager>().ResetLevelCoins();
             // Setting the sprite's y-coordinates to a fixed value (align the sprite to the lower boundary of the collider)
             Transform spriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
             spriteTransform.localPosition = new Vector3(spriteTransform.localPosition.x, -0.0422f, spriteTransform.localPosition.z);
