@@ -7,12 +7,21 @@ public class MainMenu : MonoBehaviour
 {
     public void StartNewGame()
     {
-        SceneManager.LoadScene("SampleScene"); 
+        SceneManager.LoadScene("SampleScene");
+        PlayerPrefs.DeleteKey("SavedScene");
     }
 
     public void ContinueGame()
     {
-        // Логика продолжения игры (например, загрузка сохраненного прогресса)
+        if (PlayerPrefs.HasKey("SavedScene"))
+        {
+            string savedScene = PlayerPrefs.GetString("SavedScene");
+            SceneManager.LoadScene(savedScene);
+        }
+        else
+        {
+            Debug.Log("You haven't any saved games");
+        }
     }
 
     public void ExitGame()
