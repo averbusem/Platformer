@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 897b5a178957b98488b7e1d028845366
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - jumpClip: {instanceID: 0}
+  - swordAttackClip: {instanceID: 0}
+  - fireballClip: {instanceID: 0}
+  - movementClip: {instanceID: 0}
+  - takeDamageClip: {instanceID: 0}
+  - landingClip: {fileID: 8300000, guid: b432eb0fb4943da4399ec92156a95b60, type: 3}
+  - fallingClip: {fileID: 8300000, guid: b432eb0fb4943da4399ec92156a95b60, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
