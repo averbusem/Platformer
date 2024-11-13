@@ -12,7 +12,6 @@ public class GoblinAudioController : MonoBehaviour
     private List<AudioSource> audioSources = new List<AudioSource>(); // List to store multiple AudioSources
 
     private bool isPlayingMovementSound = false;
-    private bool isObjectVisible = false;   
     private void Awake()
     {
         // Create an AudioSource for each sound effect

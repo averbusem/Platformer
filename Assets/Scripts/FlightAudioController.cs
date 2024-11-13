@@ -12,7 +12,6 @@ public class FlightAudioController : MonoBehaviour
     private SpriteRenderer objectRenderer; // Для проверки видимости объекта
 
     private bool isFlyingMovementSound = false;
-    private bool isObjectVisible = false; // Флаг, отслеживающий видимость
 
     private void Awake()
     {
