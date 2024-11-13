@@ -70,14 +70,23 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("ySpeed", rb.velocity.y);
         anim.SetBool("OnGround", col_touch_check.IsGrounded);
         // Sounds ===============================
-        if (!col_touch_check.IsGrounded && rb.velocity.y >= 0)
-        {
-            audioManager.PlayFlyingSound();
-        }
-        else
-        {
-            audioManager.StopFlyingSound();
-        }
+        //if (!col_touch_check.IsGrounded && rb.velocity.y < -0.1f)
+        //{
+        //    audioManager.PlayFallingSound();
+        //}
+        //else
+        //{
+        //    audioManager.StopFallingSound();
+        //}
+
+        //if (!col_touch_check.IsGrounded && rb.velocity.y >= 0)
+        //{
+        //    audioManager.PlayFlyingSound();
+        //}
+        //else
+        //{
+        //    audioManager.StopFlyingSound();
+        //}
 
         if (!wasGrounded && col_touch_check.IsGrounded && Mathf.Abs(move_input.x) > 0)
         {

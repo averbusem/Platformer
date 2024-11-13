@@ -52,7 +52,12 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadLevel()
     {
-        //Logic for loading level
+        Time.timeScale = 1f;
+
+        Destroy(GameObject.Find("PauseMenu"));
+        Destroy(GameObject.Find("GameUI"));
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
