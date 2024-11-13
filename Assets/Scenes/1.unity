@@ -1784,7 +1784,7 @@ MonoBehaviour:
   walkingClip: {fileID: 8300000, guid: b99daa8196f130545af804f8f3844dc3, type: 3}
   attackClip: {fileID: 8300000, guid: a50792f641c553c4c9144bea884b4821, type: 3}
   takeDamageClip: {fileID: 8300000, guid: b487a088ff3a0ed40b55a030535f40f3, type: 3}
-  player: {fileID: 904056178}
+  player: {fileID: 519420028}
 --- !u!1001 &199335678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2277,7 +2277,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2700,11 +2700,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &904056178 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2115161514342033630, guid: 8a381041852076540821a589110a3ce7, type: 3}
-  m_PrefabInstance: {fileID: 1505632724}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &947461180
 GameObject:
   m_ObjectHideFlags: 0
@@ -10227,7 +10222,7 @@ MonoBehaviour:
   flyingClip: {fileID: 8300000, guid: bcef8039ee2ac004aa32c6f650cbfd98, type: 3}
   takeDamageClip: {fileID: 8300000, guid: 619566fcabad0bd42aa4aee7d33136bd, type: 3}
   fireballClip: {fileID: 8300000, guid: 5a1c74020d26e9344956bbde162d7be5, type: 3}
-  player: {fileID: 904056178}
+  player: {fileID: 519420028}
 --- !u!4 &1504460009
 Transform:
   m_ObjectHideFlags: 0
