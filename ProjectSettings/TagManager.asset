@@ -9,6 +9,7 @@ TagManager:
   - Flight
   - Goblin
   - Ground
+  - DeathLine
   layers:
   - Default
   - TransparentFX

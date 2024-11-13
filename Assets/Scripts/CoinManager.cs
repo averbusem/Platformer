@@ -69,6 +69,11 @@ public class CoinManager : MonoBehaviour
         UpdateCoinText();
     }
 
+    public void SaveCoins()
+    {
+        currentCoin = 0;
+    }
+
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;

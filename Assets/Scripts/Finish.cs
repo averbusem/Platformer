@@ -9,6 +9,7 @@ public class Finish : MonoBehaviour
     {
         if ( collision.tag == "Player")
         {
+            FindObjectOfType<CoinManager>().SaveCoins();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
