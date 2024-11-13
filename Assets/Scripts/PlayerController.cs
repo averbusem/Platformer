@@ -88,11 +88,6 @@ public class PlayerController : MonoBehaviour
         //    audioManager.StopFlyingSound();
         //}
 
-        if (!wasGrounded && col_touch_check.IsGrounded)
-        {
-            audioManager.PlayLandingSound();
-        }
-
         if (!wasGrounded && col_touch_check.IsGrounded && Mathf.Abs(move_input.x) > 0)
         {
             audioManager.PlayMovementSound();
