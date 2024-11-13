@@ -13,6 +13,7 @@ public class EnemyFlight : MonoBehaviour
     float pos_x;
     private Vector2 dir = Vector2.right;
     private Rigidbody2D rb;
+    [SerializeField] private FlightAudioController audioManager;
     Animator anim;
     SpriteRenderer spt;
     GameObject player;
@@ -38,6 +39,7 @@ public class EnemyFlight : MonoBehaviour
         {
             if (Vector2.Distance(player.transform.position, transform.position) < 5f)
             {
+                audioManager.StopFlyingSound();
                 isFacingPlayer();
                 speed = 0;
                 //anim.SetFloat("Speed", Mathf.Abs(speed));
@@ -48,6 +50,7 @@ public class EnemyFlight : MonoBehaviour
             }
             else
             {
+                audioManager.PlayFlyingSound();
                 speed = 2.0f;
                 if (Mathf.Abs(transform.position.x - pos_x) < dist)
                 {
@@ -82,6 +85,7 @@ public class EnemyFlight : MonoBehaviour
     private void Attack1()
     {
         Instantiate(fb, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0,0,0));
+        audioManager.PlayFireballSound();
         StartCoroutine(Reload());
     }
     /*
@@ -98,7 +102,7 @@ public class EnemyFlight : MonoBehaviour
     public void TakeDamage(int damage) // параметр damage, тк игра может иметь различные источники урона, которые наносят разное количество урона (например, слабая атака — 1, сильная атака — 2)
     {
         health-=damage;
-
+        audioManager.PlayTakeDamageSound();
         if (health <= 0)
         {
             Death();

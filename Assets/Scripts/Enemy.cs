@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     float pos_x;
     private Vector2 dir = Vector2.right;
     private Rigidbody2D rb;
+    [SerializeField] private GoblinAudioController audioManager;
+    public Camera cam;
     Animator anim;
     SpriteRenderer spt;
     GameObject player;
@@ -35,6 +37,7 @@ public class Enemy : MonoBehaviour
         {
             if (Vector2.Distance(player.transform.position, transform.position) < 2.5f)
             {
+                audioManager.StopMovementSound();
                 speed = 0;
                 isFacingPlayer();
                 anim.SetFloat("Speed", Mathf.Abs(speed));
@@ -45,6 +48,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                audioManager.PlayWalkingSound();
                 speed = 2.0f;
                 if (Mathf.Abs(transform.position.x - pos_x) < dist)
                 {
@@ -80,6 +84,10 @@ public class Enemy : MonoBehaviour
         anim.SetTrigger("Attack");
         StartCoroutine(Reload());
     }
+    private void PlayAttackSound()
+    {
+        audioManager.PlayAttackSound();
+    }
     private void Attack2() 
     {
         Collider2D[] damage = Physics2D.OverlapCircleAll(attack_gp.transform.position, 3, player_layer);
@@ -91,7 +99,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage) // параметр damage, тк игра может иметь различные источники урона, которые наносят разное количество урона (например, слабая атака — 1, сильная атака — 2)
     {
         health-=damage;
-
+        audioManager.TakeDamageSound();
         if (health <= 0)
         {
             Death();
@@ -99,6 +107,7 @@ public class Enemy : MonoBehaviour
     }
     public void Death()
     {
+        audioManager.StopMovementSound();
         anim.SetTrigger("Death");
         isDead = true;
         rb.simulated = false;
