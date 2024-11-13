@@ -859,7 +859,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 145520003}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: StartNewGame
+        m_MethodName: ContinueGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
