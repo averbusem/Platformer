@@ -4,30 +4,51 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    // --- Movement variables ---
     [SerializeField]
-    private float movement_speed = 300; 
-    private bool isSwordReloading= false;
-    private float reloadTime = 0.255f;
+    private float movementSpeed = 300;
+    [SerializeField]
+    private float jumpImpulse = 8;
+    private Vector2 moveInput;
+    private bool isJumpHeld = false;
+
+    // --- Attack and Reload variables ---
+    [SerializeField]
+    private GameObject fireball;
+    [SerializeField]
+    private Transform FirePoint; // Point from which the fireball is fired
+    [SerializeField]
+    private float fireballDelay; // Delay before firing another fireball
+    [SerializeField]
+    private float reloadTimeFireballAtack; // Time between fireball attacks for animation
+    private bool isSwordReloading = false;
+    private bool isFireballReloading = false;
+    private float reloadTime = 0.255f; // Reload time for sword attack
+
+    // --- Health and State ---
     private bool isDead = false;
     private bool facingRight = true;
-    private bool wasGrounded = true;
+    private bool wasGrounded = true; // Flag to check if the player was grounded in the previous frame
 
+    // --- Components ---
     Rigidbody2D rb;
-    CollisionTouchCheck col_touch_check;
+    CollisionTouchCheck colTouchCheck;
     SpriteRenderer spr;
     Animator anim;
-    GameObject attack_p;
+    GameObject attack_p; // GameObject for the attack point
     public LayerMask enemy;
     private Player playerComponent;
     private Color originalColor;
-    [SerializeField] private PlayerAudioManager audioManager;
+    [SerializeField]
+    private PlayerAudioManager audioManager;
     [SerializeField]
     private GameObject deathPanel;
 
+    // --- Initialize components ---
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        col_touch_check = GetComponent<CollisionTouchCheck>();
+        colTouchCheck = GetComponent<CollisionTouchCheck>();
         spr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
         attack_p = GameObject.FindWithTag("Attack_p");
@@ -35,22 +56,23 @@ public class PlayerController : MonoBehaviour
         originalColor = spr.color;
     }
 
-    Vector2 move_input;
-    private bool isJumpHeld = false; 
 
+
+    // --- Movement handling ---
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (isDead) return;
-        move_input = context.ReadValue<Vector2>();
-        anim.SetFloat("Speed",Mathf.Abs(move_input.x));
+        if (isDead) return; // Ignore movement if the player is dead
+        moveInput = context.ReadValue<Vector2>();
+        anim.SetFloat("Speed",Mathf.Abs(moveInput.x));
 
-        if (Mathf.Abs(move_input.x) > 0 && col_touch_check.IsGrounded)
+        // Play movement sound if on ground
+        if (Mathf.Abs(moveInput.x) > 0 && colTouchCheck.IsGrounded)
             audioManager.PlayMovementSound();
         else
             audioManager.StopMovementSound();
 
     }
-
+    // --- Flip character direction ---
     private void Flip()
     {
         facingRight = !facingRight;
@@ -63,13 +85,14 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead)
         {
-            rb.velocity = Vector2.zero;
-            return;
+            rb.velocity = Vector2.zero; // Stop player movement if dead
+            return; 
         }
-        rb.velocity = new Vector2(move_input.x * movement_speed * Time.fixedDeltaTime, rb.velocity.y);
+        // Apply movement and update animation states
+        rb.velocity = new Vector2(moveInput.x * movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
         anim.SetFloat("ySpeed", rb.velocity.y);
-        anim.SetBool("OnGround", col_touch_check.IsGrounded);
-        // Sounds ===============================
+        anim.SetBool("OnGround", colTouchCheck.IsGrounded);
+
         //if (!col_touch_check.IsGrounded && rb.velocity.y < -0.1f)
         //{
         //    audioManager.PlayFallingSound();
@@ -87,56 +110,59 @@ public class PlayerController : MonoBehaviour
         //{
         //    audioManager.StopFlyingSound();
         //}
-        if (!wasGrounded && col_touch_check.IsGrounded)
+
+        // Handle sounds on movement
+        if (!wasGrounded && colTouchCheck.IsGrounded)
         {
             audioManager.PlayLandingSound();
         }
 
-        if (!wasGrounded && col_touch_check.IsGrounded && Mathf.Abs(move_input.x) > 0)
+        if (!wasGrounded && colTouchCheck.IsGrounded && Mathf.Abs(moveInput.x) > 0)
         {
             audioManager.PlayMovementSound();
         }
-        else if (!col_touch_check.IsGrounded || Mathf.Abs(move_input.x) == 0)
+        else if (!colTouchCheck.IsGrounded || Mathf.Abs(moveInput.x) == 0)
         {
             audioManager.StopMovementSound();
         }
+        wasGrounded = colTouchCheck.IsGrounded;
 
-        wasGrounded = col_touch_check.IsGrounded;
-        // End Sounds ===============================
+        // Handle jump animations
         if (Mathf.Abs(rb.velocity.y)>0.1)
         {
             anim.SetTrigger("Jump");
         }
- 
-        if (move_input.x < 0 && facingRight)
+
+        // Flip character depending on movement direction
+        if (moveInput.x < 0 && facingRight)
         {
             Flip();
         }
-        else if (move_input.x > 0 && !facingRight)
+        else if (moveInput.x > 0 && !facingRight)
         {
             Flip();
         }
-        
-        if (col_touch_check.IsGrounded && isJumpHeld)
+
+        // Jump handling
+        if (colTouchCheck.IsGrounded && isJumpHeld)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jump_impulse);
+            rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
        
     }
 
-    [SerializeField]
-    float jump_impulse = 8;
 
+    // --- Handle jumping inputs ---
     public void OnJump(InputAction.CallbackContext context)
     {
         if (isDead) return;
         if (context.started)
         {
             isJumpHeld = true;
-            if (col_touch_check.IsGrounded)
+            if (colTouchCheck.IsGrounded)
             {
                 audioManager.PlayJumpSound();
-                rb.velocity = new Vector2(rb.velocity.x, jump_impulse);
+                rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
             }
         }
 
@@ -146,6 +172,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.3f);
         }
     }
+
+    // --- Sword reload and attack ---
     IEnumerator Sword_Reload()
     {
         isSwordReloading = true;
@@ -162,7 +190,6 @@ public class PlayerController : MonoBehaviour
                 Collider2D[] damage = Physics2D.OverlapCircleAll(attack_p.transform.position, 2, enemy);
                 foreach (Collider2D col in damage)
                 {
-                    //Debug.Log(col + " Damaged");
                     if (col.gameObject.CompareTag("Goblin"))
                     {
                         col.GetComponent<Enemy>().TakeDamage(1);
@@ -181,11 +208,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private bool isFireballReloading = false; 
-    public GameObject fireball;
-    public Transform FirePoint;
-    public float fireballDelay;
-    public float reloadTimeFireballAtack;
+    // --- Fireball reload and attack ---
     IEnumerator FireballReload()
     {
         isFireballReloading = true;
@@ -214,13 +237,15 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    // --- Flash red on damage ---
     private IEnumerator FlashRed()
     {
         spr.color = new Color32(255, 105, 105, 255);
         yield return new WaitForSeconds(0.15f); // Delay
         spr.color = originalColor;
     }
+
+    // --- Handle player taking damage ---
     public void TakeDamage(int damage)
     {
         if (isDead) return;
@@ -229,10 +254,11 @@ public class PlayerController : MonoBehaviour
         audioManager.PlayTakeDamageSound();
         if (playerComponent.Health <= 0)
         {
-            // The logic of the player's death
+            // Player death logic
             isDead = true;
             FindObjectOfType<CoinManager>().ResetLevelCoins();
-            // Setting the sprite's y-coordinates to a fixed value (align the sprite to the lower boundary of the collider)
+
+            // Align sprite position for death animation
             Transform spriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
             spriteTransform.localPosition = new Vector3(spriteTransform.localPosition.x, -0.0422f, spriteTransform.localPosition.z);
 
