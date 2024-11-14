@@ -5,27 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StartNewGame()
+    public void NewGame()
     {
-        SceneManager.LoadScene("SampleScene");
-        PlayerPrefs.DeleteKey("SavedScene");
+        GameManager.instance.ResetProgress(); // Сброс прогресса
+        SceneManager.LoadScene(0); // Загружаем первую игровую сцену
     }
 
     public void ContinueGame()
     {
-        if (PlayerPrefs.HasKey("SavedScene"))
-        {
-            string savedScene = PlayerPrefs.GetString("SavedScene");
-            SceneManager.LoadScene(savedScene);
-        }
-        else
-        {
-            Debug.Log("You haven't any saved games");
-        }
+        GameManager.instance.LoadGame(); // Загружаем сохранённый прогресс
     }
 
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void ShowMenu()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void HideMenu()
+    {
+        gameObject.SetActive(false);
     }
 }
