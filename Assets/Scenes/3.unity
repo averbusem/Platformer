@@ -4653,6 +4653,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathLine
       objectReference: {fileID: 0}
+    - target: {fileID: 2653489252392101118, guid: 1f84a216413bccc42a556df0020e58f4, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1768979
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653489252392101118, guid: 1f84a216413bccc42a556df0020e58f4, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.088449046
+      objectReference: {fileID: 0}
     - target: {fileID: 4667844773101224610, guid: 1f84a216413bccc42a556df0020e58f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.880732
