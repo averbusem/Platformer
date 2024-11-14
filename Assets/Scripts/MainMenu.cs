@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         GameManager.instance.ResetProgress();
+        CoinManager.instance.ResetAllCoins();
         SceneManager.LoadScene(0); 
     }
 

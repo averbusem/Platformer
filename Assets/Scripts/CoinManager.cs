@@ -74,6 +74,13 @@ public class CoinManager : MonoBehaviour
         currentCoin = 0;
     }
 
+    public void ResetAllCoins()
+    {
+        totalCoins = 0;
+        currentCoin = 0;
+        UpdateCoinText();
+    }
+
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
