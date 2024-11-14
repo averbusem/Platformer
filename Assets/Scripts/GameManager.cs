@@ -37,8 +37,8 @@ public class GameManager : MonoBehaviour
     // Метод для загрузки прогресса
     public void LoadGame()
     {
-        totalCoins = PlayerPrefs.GetInt("TotalCoins", 0); // По умолчанию 0 монет
-        lastSceneIndex = PlayerPrefs.GetInt("LastSceneIndex", 0); // По умолчанию сцена 1
+        totalCoins = PlayerPrefs.GetInt("TotalCoins", 0); 
+        lastSceneIndex = PlayerPrefs.GetInt("LastSceneIndex", 0);
         SceneManager.LoadScene(lastSceneIndex);
     }
 

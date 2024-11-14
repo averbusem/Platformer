@@ -8,6 +8,7 @@ public class Finish : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameManager.instance.SaveGame(); // Сохранение прогресса при завершении уровня
+            FindObjectOfType<CoinManager>().SaveCoins();
             LoadNextLevel(); // Переход к следующему уровню
         }
     }

@@ -7,27 +7,17 @@ public class MainMenu : MonoBehaviour
 {
     public void NewGame()
     {
-        GameManager.instance.ResetProgress(); // Сброс прогресса
-        SceneManager.LoadScene(0); // Загружаем первую игровую сцену
+        GameManager.instance.ResetProgress();
+        SceneManager.LoadScene(0); 
     }
 
     public void ContinueGame()
     {
-        GameManager.instance.LoadGame(); // Загружаем сохранённый прогресс
+        GameManager.instance.LoadGame(); 
     }
 
     public void ExitGame()
     {
         Application.Quit();
-    }
-
-    public void ShowMenu()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void HideMenu()
-    {
-        gameObject.SetActive(false);
     }
 }
