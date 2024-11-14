@@ -70,6 +70,7 @@ public class GoblinAudioController : MonoBehaviour
             if (source.clip == clip && !source.isPlaying)
             {
                 source.loop = loop;
+                source.volume = 0.3f;
                 source.Play();
                 break;
             }
