@@ -54,6 +54,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                ContinueWalking();
                 audioManager.PlayWalkingSound();                                       // если не видит игрока то просто патрулирует
                 speed = 2.0f;
                 if (Mathf.Abs(transform.position.x - pos_x) < dist)
@@ -100,7 +101,6 @@ public class Enemy : MonoBehaviour
         Collider2D[] damage = Physics2D.OverlapCircleAll(attack_gp.transform.position, 3, player_layer);
         foreach (Collider2D col in damage)
         {
-            Debug.Log("shsh");
             col.GetComponent<PlayerController>().TakeDamage(1);
         }
 
@@ -132,6 +132,19 @@ public class Enemy : MonoBehaviour
         {
             spt.flipX = !spt.flipX;
             isFacingRight = !isFacingRight;
+        }
+    }
+    private void ContinueWalking()
+    {
+        if(dir==Vector2.left && isFacingRight)
+        {
+            isFacingRight=false;
+            spt.flipX = !spt.flipX;
+        }
+        if (dir == Vector2.right && !isFacingRight)
+        {
+            isFacingRight = true;
+            spt.flipX = !spt.flipX;
         }
     }
 }
