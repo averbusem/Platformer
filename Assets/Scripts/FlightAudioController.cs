@@ -10,13 +10,14 @@ public class FlightAudioController : MonoBehaviour
     public GameObject player;
     private List<AudioSource> audioSources = new List<AudioSource>(); // List to store multiple AudioSources
     private SpriteRenderer objectRenderer; // Для проверки видимости объекта
+    private EnemyFlight ef;
 
     private bool isFlyingMovementSound = false;
 
     private void Awake()
     {
         objectRenderer = GetComponentInParent<SpriteRenderer>();
-
+        ef = GetComponentInParent<EnemyFlight>();
         // Create an AudioSource for each sound effect
         CreateAudioSource(flyingClip);
         CreateAudioSource(fireballClip);
@@ -25,7 +26,7 @@ public class FlightAudioController : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(player.transform.position, transform.position) > 13.5)
+        if (Vector2.Distance(player.transform.position, transform.position) > 13.5 || ef.IsDead())
         {
             PauseAllSounds();
         }

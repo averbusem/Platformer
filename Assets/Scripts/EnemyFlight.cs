@@ -138,4 +138,8 @@ public class EnemyFlight : MonoBehaviour
             isFacingRight = !isFacingRight;
         }
     }
+    public bool IsDead()
+    {
+        return isDead;
+    }
 }

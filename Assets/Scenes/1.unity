@@ -2823,17 +2823,25 @@ PrefabInstance:
       propertyPath: player_layer.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6071448367750558003, guid: e9d1670f624be1a4b92d9d1172394ed3, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071448367750558003, guid: e9d1670f624be1a4b92d9d1172394ed3, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 447
+      objectReference: {fileID: 0}
     - target: {fileID: 6143633661112857392, guid: e9d1670f624be1a4b92d9d1172394ed3, type: 3}
       propertyPath: m_Name
       value: Flight
       objectReference: {fileID: 0}
     - target: {fileID: 7620170952533753633, guid: e9d1670f624be1a4b92d9d1172394ed3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.47
+      value: -8.84
       objectReference: {fileID: 0}
     - target: {fileID: 7620170952533753633, guid: e9d1670f624be1a4b92d9d1172394ed3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07
+      value: -0.53
       objectReference: {fileID: 0}
     - target: {fileID: 7620170952533753633, guid: e9d1670f624be1a4b92d9d1172394ed3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2948,7 +2956,7 @@ GameObject:
   - component: {fileID: 1067238137}
   m_Layer: 6
   m_Name: TilemapGroundNoFiction
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10824,6 +10832,14 @@ PrefabInstance:
     - target: {fileID: 1930376909823642201, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340372650895857026, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
+      propertyPath: m_Size.y
+      value: 0.38424852
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340372650895857026, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.07172479
       objectReference: {fileID: 0}
     - target: {fileID: 5221575212311164057, guid: d5c4acfe1e7c3d647b8e058253b2f313, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
