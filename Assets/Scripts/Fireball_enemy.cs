@@ -6,13 +6,17 @@ using UnityEngine;
 public class Fireball_enemy : MonoBehaviour
 {
     private GameObject player;
+
+    private Transform trn;
+    private Vector3 posi;
+    private Vector3 direction;
+
     private float speed = 1f;
-    private int damage = 1;
     private float pos_x;
     private float pos_y;
-    Transform trn;
-    Vector3 posi;
-    Vector3 direction;
+
+    private int damage = 1;
+    // получение объектов, компонентов, получаем позицию игрока на моменте появления файербола
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -22,6 +26,7 @@ public class Fireball_enemy : MonoBehaviour
         Vector3 posi = new Vector3(pos_x, pos_y,0);
         direction = (posi - transform.position) * speed * Time.deltaTime;
     }
+    // летит в точку игрока(которая была определена)
     void FixedUpdate()
     {
         if (player != null)
@@ -29,6 +34,7 @@ public class Fireball_enemy : MonoBehaviour
             transform.position += direction;
         }
     }
+    // если попал в игрока, нанес урон
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

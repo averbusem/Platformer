@@ -2578,7 +2578,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000933e6618e7d3086aa195dc565fa61c96
+  m_ApplyToSortingLayers: 00000000933e6618e7d3086aa195dc565fa61c96f3dace5d
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -10849,6 +10849,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 5934688652920327077, guid: 7f115eacd5fd73d438d152fd2634f788, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934688652920327077, guid: 7f115eacd5fd73d438d152fd2634f788, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934688652920327077, guid: 7f115eacd5fd73d438d152fd2634f788, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6171607532343143062, guid: 7f115eacd5fd73d438d152fd2634f788, type: 3}
       propertyPath: m_Name
       value: Goblin

@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Camera cam;
+    public LayerMask player_layer;
+
+    [SerializeField] private GoblinAudioController audioManager;
+
+    private Rigidbody2D rb;
+    private Animator anim;
+    private SpriteRenderer spt;
+    private GameObject player;
+    private GameObject attack_gp;
+
+    private Vector2 dir = Vector2.right;
     private float speed = 2.0f;
     private float dist = 2.5f;
-    private bool reload=false;
-    private bool isDead=false;
-    private bool isFacingRight = true;
+    private float pos_x;
     private int health = 2;
-    float pos_x;
-    private Vector2 dir = Vector2.right;
-    private Rigidbody2D rb;
-    [SerializeField] private GoblinAudioController audioManager;
-    public Camera cam;
-    Animator anim;
-    SpriteRenderer spt;
-    GameObject player;
-    GameObject attack_gp;
-    public LayerMask player_layer;
+    private float attackRange = 2.5f;
+
+    private bool reload = false;
+    private bool isDead = false;
+    private bool isFacingRight = true;
+
+    // Получение компонентов и объектов
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,9 +40,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isDead)
+        if (!isDead)                                                      // если игрок на определённом расстоянии от монстра, монстр атакует
         {
-            if (Vector2.Distance(player.transform.position, transform.position) < 2.5f)
+            if (Vector2.Distance(player.transform.position, transform.position) < attackRange) 
             {
                 audioManager.StopMovementSound();
                 speed = 0;
@@ -48,7 +55,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                audioManager.PlayWalkingSound();
+                audioManager.PlayWalkingSound();                                       // если не видит игрока то просто патрулирует
                 speed = 2.0f;
                 if (Mathf.Abs(transform.position.x - pos_x) < dist)
                 {
@@ -73,6 +80,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    // перезарядка атаки
     IEnumerator Reload()
     {
         reload = true;
