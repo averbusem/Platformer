@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spt;
     private GameObject player;
-    private GameObject attack_gp;
+    [SerializeField] private GameObject attack_gp;
 
     private Vector2 dir = Vector2.right;
     private float speed = 2.0f;
@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         spt = GetComponent<SpriteRenderer>();
         player = GameObject.FindWithTag("Player");
-        attack_gp = GameObject.FindWithTag("Attack_gp");
     }
 
     // Update is called once per frame
@@ -55,6 +54,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                ContinueWalking();
                 audioManager.PlayWalkingSound();                                       // если не видит игрока то просто патрулирует
                 speed = 2.0f;
                 if (Mathf.Abs(transform.position.x - pos_x) < dist)
@@ -103,6 +103,7 @@ public class Enemy : MonoBehaviour
         {
             col.GetComponent<PlayerController>().TakeDamage(1);
         }
+
     }
     public void TakeDamage(int damage) // параметр damage, тк игра может иметь различные источники урона, которые наносят разное количество урона (например, слабая атака — 1, сильная атака — 2)
     {
@@ -131,6 +132,19 @@ public class Enemy : MonoBehaviour
         {
             spt.flipX = !spt.flipX;
             isFacingRight = !isFacingRight;
+        }
+    }
+    private void ContinueWalking()
+    {
+        if(dir==Vector2.left && isFacingRight)
+        {
+            isFacingRight=false;
+            spt.flipX = !spt.flipX;
+        }
+        if (dir == Vector2.right && !isFacingRight)
+        {
+            isFacingRight = true;
+            spt.flipX = !spt.flipX;
         }
     }
 }

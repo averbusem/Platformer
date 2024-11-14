@@ -55,6 +55,7 @@ public class EnemyFlight : MonoBehaviour
             }
             else                                                  // если не видит игрока то просто патрулирует
             {
+                ContinueWalking();
                 audioManager.PlayFlyingSound();
                 speed = 2.0f;
                 if (Mathf.Abs(transform.position.x - pos_x) < dist)
@@ -146,5 +147,18 @@ public class EnemyFlight : MonoBehaviour
     public bool IsDead()
     {
         return isDead;
+    }
+    private void ContinueWalking()
+    {
+        if (dir == Vector2.left && isFacingRight)
+        {
+            isFacingRight = false;
+            spt.flipX = !spt.flipX;
+        }
+        if (dir == Vector2.right && !isFacingRight)
+        {
+            isFacingRight = true;
+            spt.flipX = !spt.flipX;
+        }
     }
 }
