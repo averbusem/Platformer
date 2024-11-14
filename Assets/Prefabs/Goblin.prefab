@@ -210,6 +210,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   audioManager: {fileID: 3888949595701347216}
+  attack_gp: {fileID: 3792247938198821815}
 --- !u!95 &7341969533744815311
 Animator:
   serializedVersion: 5
