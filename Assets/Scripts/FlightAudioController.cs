@@ -7,7 +7,7 @@ public class FlightAudioController : MonoBehaviour
     [SerializeField] private AudioClip flyingClip;
     [SerializeField] private AudioClip takeDamageClip;
     [SerializeField] private AudioClip fireballClip;
-    public GameObject player;
+    private GameObject player;
     private List<AudioSource> audioSources = new List<AudioSource>(); // List to store multiple AudioSources
     private SpriteRenderer objectRenderer; // Для проверки видимости объекта
     private EnemyFlight ef;
@@ -16,6 +16,7 @@ public class FlightAudioController : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("MainCamera");
         objectRenderer = GetComponentInParent<SpriteRenderer>();
         ef = GetComponentInParent<EnemyFlight>();
         // Create an AudioSource for each sound effect

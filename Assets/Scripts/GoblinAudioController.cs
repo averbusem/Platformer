@@ -7,7 +7,7 @@ public class GoblinAudioController : MonoBehaviour
     [SerializeField] private AudioClip walkingClip;
     [SerializeField] private AudioClip attackClip;
     [SerializeField] private AudioClip takeDamageClip;
-    public GameObject player;
+    private GameObject player;
     private SpriteRenderer objectRenderer;
     private List<AudioSource> audioSources = new List<AudioSource>(); // List to store multiple AudioSources
 
@@ -15,6 +15,7 @@ public class GoblinAudioController : MonoBehaviour
     private void Awake()
     {
         // Create an AudioSource for each sound effect
+        player = GameObject.FindGameObjectWithTag("MainCamera");
         objectRenderer = GetComponentInParent<SpriteRenderer>();
         CreateAudioSource(walkingClip);
         CreateAudioSource(attackClip);
