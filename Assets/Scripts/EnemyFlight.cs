@@ -20,6 +20,7 @@ public class EnemyFlight : MonoBehaviour
     private float speed = 2.0f;
     private float dist = 2.5f;
     private float pos_x;
+    private float attackRange = 5f;
     private int health = 2;
 
     private bool reload = false;
@@ -41,7 +42,7 @@ public class EnemyFlight : MonoBehaviour
     {
         if (!isDead)                                                            // если игрок на определённом расстоянии от монстра, монстр атакует
         {
-            if (Vector2.Distance(player.transform.position, transform.position) < 5f)
+            if (Vector2.Distance(player.transform.position, transform.position) < attackRange)
             {
                 audioManager.StopFlyingSound();
                 isFacingPlayer();
