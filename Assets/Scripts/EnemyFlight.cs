@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class EnemyFlight : MonoBehaviour
 {
-    private float speed = 2.0f;
-    private float dist = 2.5f;
-    private bool reload=false;
-    private bool isDead=false;
-    private bool isFacingRight = true;
-    private int health = 2;
-    float pos_x;
-    private Vector2 dir = Vector2.right;
-    private Rigidbody2D rb;
-    [SerializeField] private FlightAudioController audioManager;
-    Animator anim;
-    SpriteRenderer spt;
-    GameObject player;
-    GameObject attack_gp;
-    Transform trn;
     public GameObject fb;
     public LayerMask player_layer;
+
+    [SerializeField] private FlightAudioController audioManager;
+
+    private Rigidbody2D rb;
+    private Animator anim;
+    private SpriteRenderer spt;
+    private Transform trn;
+    private GameObject player;
+    private GameObject attack_gp;
+
+    private Vector2 dir = Vector2.right;
+    private float speed = 2.0f;
+    private float dist = 2.5f;
+    private float pos_x;
+    private float attackRange = 5f;
+    private int health = 2;
+
+    private bool reload = false;
+    private bool isDead = false;
+    private bool isFacingRight = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,9 +40,9 @@ public class EnemyFlight : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isDead)
+        if (!isDead)                                                            // если игрок на определённом расстоянии от монстра, монстр атакует
         {
-            if (Vector2.Distance(player.transform.position, transform.position) < 5f)
+            if (Vector2.Distance(player.transform.position, transform.position) < attackRange)
             {
                 audioManager.StopFlyingSound();
                 isFacingPlayer();
@@ -48,7 +53,7 @@ public class EnemyFlight : MonoBehaviour
                     Attack1();
                 }
             }
-            else
+            else                                                  // если не видит игрока то просто патрулирует
             {
                 audioManager.PlayFlyingSound();
                 speed = 2.0f;

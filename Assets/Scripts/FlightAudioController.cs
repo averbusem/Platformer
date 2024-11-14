@@ -7,13 +7,15 @@ public class FlightAudioController : MonoBehaviour
     [SerializeField] private AudioClip flyingClip;
     [SerializeField] private AudioClip takeDamageClip;
     [SerializeField] private AudioClip fireballClip;
+
     private GameObject player;
-    private List<AudioSource> audioSources = new List<AudioSource>(); // List to store multiple AudioSources
+    private List<AudioSource> audioSources = new List<AudioSource>(); // Список для хранения нескольких AudioSource
     private SpriteRenderer objectRenderer; // Для проверки видимости объекта
     private EnemyFlight ef;
 
     private bool isFlyingMovementSound = false;
 
+    // Получение компонентов и объектов
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("MainCamera");
@@ -25,7 +27,7 @@ public class FlightAudioController : MonoBehaviour
         CreateAudioSource(takeDamageClip);
     }
 
-    private void Update()
+    private void Update()             // если видно врага то звук есть, если нет звука нет
     {
         if (Vector2.Distance(player.transform.position, transform.position) > 13.5 || ef.IsDead())
         {
@@ -36,7 +38,7 @@ public class FlightAudioController : MonoBehaviour
             ResumeAllSounds();
         }
     }
-
+    // создание различных клипов чтобы вставить звуки
     private void CreateAudioSource(AudioClip clip)
     {
         AudioSource newSource = gameObject.AddComponent<AudioSource>();
@@ -48,7 +50,7 @@ public class FlightAudioController : MonoBehaviour
     {
         if (!isFlyingMovementSound && flyingClip != null)
         {
-            PlaySound(flyingClip, true);  // Loop movement sound
+            PlaySound(flyingClip, true); 
             isFlyingMovementSound = true;
         }
     }
@@ -97,7 +99,7 @@ public class FlightAudioController : MonoBehaviour
             }
         }
     }
-
+    // пауза и восстановление звучания
     private void PauseAllSounds()
     {
         foreach (var source in audioSources)

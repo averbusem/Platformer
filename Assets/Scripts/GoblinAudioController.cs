@@ -9,12 +9,12 @@ public class GoblinAudioController : MonoBehaviour
     [SerializeField] private AudioClip takeDamageClip;
     private GameObject player;
     private SpriteRenderer objectRenderer;
-    private List<AudioSource> audioSources = new List<AudioSource>(); // List to store multiple AudioSources
+    private List<AudioSource> audioSources = new List<AudioSource>();
 
     private bool isPlayingMovementSound = false;
+    // подобный код в FlightAudioController, тоже самое пояснение
     private void Awake()
     {
-        // Create an AudioSource for each sound effect
         player = GameObject.FindGameObjectWithTag("MainCamera");
         objectRenderer = GetComponentInParent<SpriteRenderer>();
         CreateAudioSource(walkingClip);

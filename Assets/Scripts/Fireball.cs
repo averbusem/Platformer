@@ -10,7 +10,7 @@ public class Fireball : MonoBehaviour
     public int damage;        
     public LayerMask isSolid; 
 
-    private float timer; // Timer for tracking the life time of a fireball
+    private float timer;
     private void Start()
     {
         timer = lifetime;
